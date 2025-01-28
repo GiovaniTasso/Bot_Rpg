@@ -35,6 +35,9 @@ func HandleButtonPress(callbackQuery *tgbotapi.CallbackQuery, bot *tgbotapi.BotA
 
 	switch data {
 	case "buscar_magia":
+		if AwaitingSpellName == nil {
+			AwaitingSpellName = make(map[int64]bool)
+		}
 		AwaitingSpellName[chatID] = true
 		bot.Send(tgbotapi.NewMessage(chatID, "Digite o nome da magia que deseja buscar:"))
 	case "listar_classes":
